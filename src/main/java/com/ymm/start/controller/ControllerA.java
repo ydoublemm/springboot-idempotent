@@ -1,5 +1,6 @@
 package com.ymm.start.controller;
 
+import com.ymm.start.annotation.ApiIdempotent;
 import com.ymm.start.bean.ABean;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class ControllerA {
     private RedissonClient redisClient;
 
     @PostMapping("a")
-    public ABean testA(@RequestBody ABean bean) {
+    public ABean testA(@ApiIdempotent (filed = "nameA") @RequestBody ABean bean) {
         redisClient.getBucket("a").set("a");
         return bean;
     }
