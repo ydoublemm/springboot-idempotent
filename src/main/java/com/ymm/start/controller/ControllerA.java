@@ -20,8 +20,8 @@ public class ControllerA {
     private RedissonClient redisClient;
 
     @PostMapping("a")
-    public ABean testA(@ApiIdempotent (filed = "nameA") @RequestBody ABean bean) {
-        redisClient.getBucket("a").set("a");
+    public ABean testA(@ApiIdempotent (filed = "nameA") @RequestBody ABean bean) throws InterruptedException {
+		Thread.sleep(5000);
         return bean;
     }
 }

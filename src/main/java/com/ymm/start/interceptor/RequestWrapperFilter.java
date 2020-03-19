@@ -17,10 +17,8 @@ public class RequestWrapperFilter implements Filter {
 		}
 
 		if(requestWrapper==null) {
-			System.out.println(111);
 			chain.doFilter(servletRequest, servletResponse);
 		}else {
-			System.out.println(222);
 			chain.doFilter(requestWrapper, servletResponse);
 		}
 	}
